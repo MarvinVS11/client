@@ -6,7 +6,7 @@ export const ENV ={
         REGISTER:"auth/register",
         LOGIN:"auth/login",
         REFRES_ACCESS_TOKEN: "auth/refresh_access_token",
-        USER_ME:"USER/ME"
+        USER_ME:"user/me"
     },
     JWT:{
         ACCESS:"access",

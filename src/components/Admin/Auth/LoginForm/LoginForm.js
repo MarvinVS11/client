@@ -7,7 +7,7 @@ import {initialValues, validationSchema} from "./LoginForm.form"
 
 const authController= new Auth();
 
-export   function LoginForm() {
+export function LoginForm() {
 
     const {login} = useAuth();
     const formik= useFormik({

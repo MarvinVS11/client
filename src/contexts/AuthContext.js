@@ -60,10 +60,10 @@ const login= async(accesToken)=>{
     const response = await userController.getMe(accesToken);
    delete response.password;
      
-     setUser({username:"marvix"})
+     setUser(response)
     //Seteamos el token del usuario
     setToken(accesToken);
-    console.log("TOKEN", accesToken);
+   // console.log("TOKEN", accesToken);
  } catch (error) {
     console.log(error);
  }
