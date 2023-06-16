@@ -1,6 +1,6 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom';
-import{map} from 'lodash'
+//import{map} from 'lodash'
 import {AdminLayout} from '../layouts'
 import {Auth, Users, Blog, Courses, Menu, Newsletter} from "../pages/admin";
 import {useAuth} from "../hooks"

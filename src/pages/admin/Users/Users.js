@@ -1,14 +1,23 @@
 import React ,{useState} from 'react'
 import {Tab, Button} from 'semantic-ui-react';
+import {BasicModal} from '../../../components/Shared';
+import {UserForm, ListUser} from '../../../components/Admin/Users';
 import "./Users.scss";
 
 export  function Users() {
+
+  //Estado para abrir o cerrar el modal
+  const [showModal, setShowModal] = useState(false);
+  //Recarga de usuarios creados
+  const [reload, setReload] = useState(false);
+  const onOpenCloseModal=()=> setShowModal((prevState)=>!prevState);
+  const onReload =()=> setReload((prevState)=>!prevState);
 const panes=[
   {
    menuItem : "Usuarios activos",
     render:()=> (
         <Tab.Pane attached = {false}>
-            <h2>Usuarios activos</h2>
+          <ListUser userActive ={true} reload={reload} onReload={onReload}/>
         </Tab.Pane>
     ),
   },
@@ -16,7 +25,7 @@ const panes=[
     menuItem : "Usuarios inactivos",
     render:()=> (
         <Tab.Pane attached = {false}>
-            <h2>Usuarios inactivos</h2>
+           <ListUser userActive ={false} reload={reload} onReload={onReload}/>
         </Tab.Pane>
     )
     
@@ -28,11 +37,14 @@ const panes=[
   return (
     <>
        <div className='users-page'>
-        <Button className='users-page__add' primary onClick={()=>console.log("Abrir Formulario")}>
+        <Button className='users-page__add' primary onClick={onOpenCloseModal}>
           Nuevo usuario
         </Button>
         <Tab menu={{secondary:true}} panes = {panes}/>
        </div>
+       <BasicModal show={showModal} close={onOpenCloseModal} title="Crear nuevo usuario">
+       <UserForm close={onOpenCloseModal} onReload ={onReload} />
+       </BasicModal>
     </>
   )
 }
