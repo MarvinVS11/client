@@ -13,25 +13,24 @@ import "./UserForm.scss"
 const userController = new User();
 
 export function UserForm(props) {
-    const {close, onReload, user} = props; 
+    const {onClose, onReload, user} = props; 
  
     const {accesToken}= useAuth();
-   // console.log("TOKEN", accessToken)
+    console.log("TOKEN"+ accesToken)
     const formik= useFormik({
         initialValues:initialValues(user),
         validationSchema:validationSchema(user),
         validateOnChange:false,
         onSubmit: async(formValue)=>{
             try {
-                //console.log(useAuth.accessToken);
+                console.log(useAuth.accessToken);
                 if(!user){
                     await userController.createUser(accesToken, formValue);
                 }else{
                     await userController.updateUser(accesToken,  user._id, formValue);
                 }
-                await userController.createUser(accesToken, formValue);
+                onClose();
                 onReload();
-                close();
             } catch (error) {
                 console.log(error)
             }
