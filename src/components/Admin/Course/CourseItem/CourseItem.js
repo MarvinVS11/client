@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, Button, Icon, Confirm} from "semantic-ui-react";
-import {ENV} from "../../../../utils"
+import {ENV} from "../../../../utils";
 import "./CourseItem.scss";
 
 export  function CourseItem(props) {
