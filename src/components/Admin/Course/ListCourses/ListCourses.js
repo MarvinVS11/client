@@ -8,7 +8,7 @@ import "./ListCourses.scss"
 const courseController = new Course();
 
 export function ListCourses(props) {
-const {reload} =  props;
+const {reload, onReload} =  props;
 const [courses, setCourses] = useState(false)
 const [page, setPage] = useState(1);
 const [pagination, setPagination] = useState()
@@ -30,6 +30,7 @@ useEffect(() =>{
         }
     })();
 }, [page, reload]);
+
 const changePage=(_, data)=>{
   console.log(data)
   setPage(data.activePage)
@@ -41,7 +42,7 @@ if(size(courses)=== 0 ) return "No hay ningun curso";
   return (
     <div className="list-courses">
        {map(courses,(course)=>(
-        <CourseItem key ={course._id} course={course}/>
+        <CourseItem key ={course._id} course={course} onReload={onReload}/>
        ))}
        <div className="list-courses__pagination">
         <Pagination

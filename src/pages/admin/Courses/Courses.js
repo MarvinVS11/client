@@ -14,7 +14,7 @@ const panes=[
   {
     render:()=>(
       <Tab.Pane attached ={false}>
-        <ListCourses reload={reload}/>
+        <ListCourses reload={reload} onReload ={onReload}/>
       </Tab.Pane>
    ) ,
   }
